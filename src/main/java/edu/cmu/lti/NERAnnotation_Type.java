@@ -13,7 +13,7 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 
 /** 
- * Updated by JCasGen Mon Sep 22 21:13:19 EDT 2014
+ * Updated by JCasGen Mon Oct 06 21:51:52 EDT 2014
  * @generated */
 public class NERAnnotation_Type extends Sentence_Type {
   /** @generated 

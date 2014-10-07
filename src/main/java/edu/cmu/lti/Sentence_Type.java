@@ -13,10 +13,8 @@ import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
 import edu.cmu.deiis.types.Annotation_Type;
 
-import org.apache.uima.jcas.tcas.Annotation_Type;
-
 /** 
- * Updated by JCasGen Mon Oct 06 21:26:48 EDT 2014
+ * Updated by JCasGen Mon Oct 06 21:51:52 EDT 2014
  * @generated */
 public class Sentence_Type extends Annotation_Type {
   /** @generated 

@@ -11,7 +11,7 @@
     <configurationParameterSettings/>
     <typeSystemDescription>
       <imports>
-        <import location="../../NERTaggerTypeSystem.xml"/>
+        <import location="../deiis_types.xml"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>

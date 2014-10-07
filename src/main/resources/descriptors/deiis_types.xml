@@ -96,5 +96,17 @@
         </featureDescription>
       </features>
     </typeDescription>
+    <typeDescription>
+      <name>edu.cmu.lti.NERAnnotation</name>
+      <description/>
+      <supertypeName>edu.cmu.lti.Sentence</supertypeName>
+      <features>
+        <featureDescription>
+          <name>NamedEntity</name>
+          <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
   </types>
 </typeSystemDescription>

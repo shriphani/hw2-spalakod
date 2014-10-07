@@ -10,8 +10,8 @@ import org.apache.uima.jcas.cas.TOP_Type;
 
 
 /** 
- * Updated by JCasGen Mon Sep 22 21:13:19 EDT 2014
- * XML source: /usr0/home/spalakod/git/hw1-spalakod/src/main/resources/NERTaggerTypeSystem.xml
+ * Updated by JCasGen Mon Oct 06 21:51:52 EDT 2014
+ * XML source: /usr0/home/spalakod/git/hw2-spalakod/src/main/resources/descriptors/deiis_types.xml
  * @generated */
 public class NERAnnotation extends Sentence {
   /** @generated
