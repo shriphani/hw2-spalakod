@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<casConsumerDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+    <implementationName>edu.cmu.lti.NERAnnotationPrinter</implementationName>
+	<processingResourceMetaData>
+		<name>NER Annotation Printer</name>
+		<description>Prints annotations.</description>
+		<version>1.0</version>
+		<configurationParameters>
+			<configurationParameter>
+				<name>OutputFile</name>
+				<description>File to which annotations will be printed</description>
+				<type>String</type>
+				<multiValued>false</multiValued>
+				<mandatory>false</mandatory>
+			</configurationParameter>
+		</configurationParameters>
+		<configurationParameterSettings>
+			<nameValuePair>
+				<name>OutputFile</name>
+				<value>
+          			<string>hw1-spalakod.out</string>
+				</value>
+			</nameValuePair>
+		</configurationParameterSettings>
+		<typeSystemDescription>
+			<imports>
+				<import name="org.apache.uima.examples.SourceDocumentInformation"/>
+			</imports>
+		</typeSystemDescription>
+		<capabilities>
+			<capability>
+				<inputs>
+					<type allAnnotatorFeatures="true">
+						org.apache.uima.examples.SourceDocumentInformation</type>
+				</inputs>
+			</capability>
+		</capabilities>
+		<operationalProperties>
+			<modifiesCas>false</modifiesCas>
+			<multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+			<outputsNewCASes>false</outputsNewCASes>
+		</operationalProperties>
+	</processingResourceMetaData>
+</casConsumerDescription>
