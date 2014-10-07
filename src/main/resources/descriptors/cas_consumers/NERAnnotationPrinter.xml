@@ -20,7 +20,7 @@
 			<nameValuePair>
 				<name>OutputFile</name>
 				<value>
-          			<string>hw1-spalakod.out</string>
+          			<string>src/main/resources/data/hw2-spalakod.out</string>
 				</value>
 			</nameValuePair>
 		</configurationParameterSettings>
