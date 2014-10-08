@@ -5,24 +5,9 @@
     <delegateAnalysisEngine key="SentenceAnnotatorDescriptor">
       <import location="../annotators/SentenceAnnotatorDescriptor.xml"/>
     </delegateAnalysisEngine>
-    <delegateAnalysisEngine key="POSTaggerNERAnnotatorDescriptor">
-      <import location="../annotators/POSTaggerNERAnnotatorDescriptor.xml"/>
+    <delegateAnalysisEngine key="LingpipeNERAnnotatorDescriptor">
+      <import location="../annotators/LingpipeNERAnnotatorDescriptor.xml"/>
   </delegateAnalysisEngine>
-<!--     <delegateAnalysisEngine key="GoldAnswerScorerDescriptor"> -->
-<!--       <import location="../annotators/GoldAnswerScorerDescriptor.xml"/> -->
-<!--     </delegateAnalysisEngine> -->
-<!--     <delegateAnalysisEngine key="TokenBiGramAnnotatorDescriptor"> -->
-<!--       <import location="../annotators/TokenBiGramAnnotatorDescriptor.xml"/> -->
-<!--     </delegateAnalysisEngine> -->
-<!--     <delegateAnalysisEngine key="TokenAnnotatorDescriptor"> -->
-<!--       <import location="../annotators/TokenAnnotatorDescriptor.xml"/> -->
-<!--     </delegateAnalysisEngine> -->
-<!--     <delegateAnalysisEngine key="EvaluatorDescriptor"> -->
-<!--       <import location="../annotators/EvaluatorDescriptor.xml"/> -->
-<!--     </delegateAnalysisEngine> -->
-<!--     <delegateAnalysisEngine key="TokenTriGramAnnotatorDescriptor"> -->
-<!--       <import location="../annotators/TokenTriGramAnnotatorDescriptor.xml"/> -->
-<!--     </delegateAnalysisEngine> -->
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>FeatureExtractorDescriptor</name>
@@ -34,7 +19,7 @@
     <flowConstraints>
       <fixedFlow>
         <node>SentenceAnnotatorDescriptor</node>
-		<node>POSTaggerNERAnnotatorDescriptor</node>
+		<node>LingpipeNERAnnotatorDescriptor</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
