@@ -3,7 +3,7 @@
   <primitive>true</primitive>
   <annotatorImplementationName>edu.cmu.lti.LingpipeNERAnnotator</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>POSTaggerNERAnnotatorDescriptor</name>
+    <name>LingpipeNERAnnotatorDescriptor</name>
     <description/>
     <version>1.0</version>
     <vendor/>
@@ -26,7 +26,7 @@
     </configurationParameterSettings>
     <typeSystemDescription>
       <imports>
-        <import location="../../NERTaggerTypeSystem.xml"/>
+        <import location="../deiis_types.xml"/>
       </imports>
     </typeSystemDescription>
     <typePriorities/>
