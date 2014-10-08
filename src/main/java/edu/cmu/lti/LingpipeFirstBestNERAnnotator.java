@@ -71,7 +71,7 @@ public class LingpipeFirstBestNERAnnotator extends JCasAnnotator_ImplBase {
         annotation.setID(s.getID());
         annotation.setText(sentence_text);
         annotation.setNamedEntity(chunkText);
-        annotation.setConfidence(nextChunk.score());
+        annotation.setConfidence(1);
         
         annotation.addToIndexes();
       }
