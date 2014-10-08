@@ -109,5 +109,10 @@
       <artifactId>lingpipe</artifactId>
       <version>4.1.0</version>
     </dependency>
+    <dependency>
+      <groupId>abner</groupId>
+      <artifactId>abner</artifactId>
+      <version>1.5</version>
+    </dependency>
 	</dependencies>
 </project>
