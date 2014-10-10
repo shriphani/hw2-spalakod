@@ -33,10 +33,9 @@ public class LingpipeFirstBestNERAnnotator extends JCasAnnotator_ImplBase {
    */
   @Override
   public void initialize(org.apache.uima.UimaContext aContext) throws ResourceInitializationException {
-    String modelFilePath = (String) aContext.getConfigParameterValue(MODEL_FILE);
-    File modelFile = new File(modelFilePath);
+    String modelFilePath = "/" + (String) aContext.getConfigParameterValue(MODEL_FILE); // need the slash in the front
     try {
-      chunker = (Chunker)AbstractExternalizable.readObject(modelFile);
+      chunker = (Chunker)AbstractExternalizable.readResourceObject(modelFilePath);
     } catch (IOException e) {
       throw new ResourceInitializationException(e);
     } catch (ClassNotFoundException e) {

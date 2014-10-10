@@ -3,6 +3,8 @@ package edu.cmu.lti;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -27,15 +29,20 @@ public class DictionaryNERAnnotator extends JCasAnnotator_ImplBase {
    */
   
   private MapDictionary<String> dictionary;
+  private String resourceLoc;
+  private final String RESOURCE_LOC_PROPERTY = "ResourceLoc";
   
   @Override
   public void initialize(UimaContext aContext) throws ResourceInitializationException {
+    
+    resourceLoc = (String)aContext.getConfigParameterValue(RESOURCE_LOC_PROPERTY);
     
     dictionary = new MapDictionary<String>();
     
     BufferedReader rdr; 
     try{
-      rdr = new BufferedReader(new FileReader("src/main/resources/gene_entities.txt"));
+      InputStream is = DictionaryNERAnnotator.class.getClassLoader().getResourceAsStream(resourceLoc);
+      rdr = new BufferedReader(new InputStreamReader(is));
       String line;
       
       while ((line = rdr.readLine()) != null) {

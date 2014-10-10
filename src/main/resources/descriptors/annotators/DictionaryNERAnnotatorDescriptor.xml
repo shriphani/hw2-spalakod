@@ -8,8 +8,21 @@
     <version>1.0</version>
     <vendor/>
     <configurationParameters>
+      <configurationParameter>
+		<name>ResourceLoc</name>
+		<description>Path to file containing trained model</description>
+		<type>String</type>
+		<multiValued>false</multiValued>
+		<mandatory>true</mandatory>
+	  </configurationParameter>
 	</configurationParameters>
     <configurationParameterSettings>
+      <nameValuePair>
+		<name>ResourceLoc</name>
+		<value>
+          <string>gene_entities.txt</string>
+	    </value>
+	  </nameValuePair>
     </configurationParameterSettings>
     <typeSystemDescription>
       <imports>
