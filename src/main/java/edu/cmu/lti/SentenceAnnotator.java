@@ -6,6 +6,12 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 import edu.cmu.lti.Sentence;
 
+/**
+ * Takes the document text, generate Sentences and add them to the CAS.
+ * @author spalakod
+ *
+ */
+
 public class SentenceAnnotator extends JCasAnnotator_ImplBase implements AnalysisComponent {
 
   @Override

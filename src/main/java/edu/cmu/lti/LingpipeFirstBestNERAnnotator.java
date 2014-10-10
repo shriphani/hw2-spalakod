@@ -18,7 +18,9 @@ import com.aliasi.chunk.Chunker;
 import com.aliasi.util.AbstractExternalizable;
 
 /**
- * Implementation of lingpipe statistical annotation
+ * Implementation of lingpipe statistical annotation.
+ * The model used is HMM and only the top ranked hypothesis is picked
+ * for annotation.
  * @author spalakod
  *
  */

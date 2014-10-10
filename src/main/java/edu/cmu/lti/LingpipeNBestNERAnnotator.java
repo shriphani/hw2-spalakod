@@ -21,7 +21,9 @@ import com.aliasi.util.AbstractExternalizable;
 import com.aliasi.util.ScoredObject;
 
 /**
- * Implementation of lingpipe statistical annotation
+ * Implementation of lingpipe statistical annotation.
+ * A HMM model trained on the Genetag corpus is used. In addition to the top
+ * ranked hypothesis, a few other hypotheses are included.
  * @author spalakod
  *
  */

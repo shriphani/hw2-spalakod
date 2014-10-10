@@ -21,7 +21,7 @@ public class AbnerAnnotator extends JCasAnnotator_ImplBase {
   private Tagger tagger;
   
   /*
-  * Read the model file from the specified location in the config
+  * Initialize the tagger
   */
  @Override
  public void initialize(org.apache.uima.UimaContext aContext) throws ResourceInitializationException {
@@ -30,6 +30,9 @@ public class AbnerAnnotator extends JCasAnnotator_ImplBase {
    
  }
 
+  /*
+   * Add annotations to the CAS using the Abner NER tagger
+   */
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
     for (FSIterator iter = aJCas.getAnnotationIndex(Sentence.type).iterator(); iter.hasNext();) {
@@ -42,7 +45,7 @@ public class AbnerAnnotator extends JCasAnnotator_ImplBase {
       for (int i = 0; i < results[0].length; i++) {
         String segment = results[0][i];
         
-        String fixedSegment = segment.replace("( ", "(").replace(" )", ")");
+        String fixedSegment = segment.replace("( ", "(").replace(" )", ")"); // this is needed since Abner emits annotations that differ from the input text
         
         
         String spacelessSegment = Utils.noWhiteSpace(fixedSegment);

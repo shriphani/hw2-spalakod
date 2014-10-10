@@ -18,7 +18,8 @@ import com.aliasi.chunk.Chunker;
 import com.aliasi.util.AbstractExternalizable;
 
 /**
- * Implementation of lingpipe statistical annotation
+ * Implementation of lingpipe statistical annotation. A HMM model is used on the GENIA corpus.
+ * GENIA is a superset of the NLPBA
  * @author spalakod
  *
  */

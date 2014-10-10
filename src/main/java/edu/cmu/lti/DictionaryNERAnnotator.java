@@ -22,15 +22,23 @@ import com.aliasi.dict.ExactDictionaryChunker;
 import com.aliasi.dict.MapDictionary;
 import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory;
 
+/**
+ * Implementation of a tagger using the Lingpipe Exact Dictionary Method
+ * 
+ * @author spalakod
+ *
+ */
+
 public class DictionaryNERAnnotator extends JCasAnnotator_ImplBase {
 
   /**
-   * Load the dictionary into memory
+   * Load the dictionary from the location specified in the config
    */
   
   private MapDictionary<String> dictionary;
   private String resourceLoc;
   private final String RESOURCE_LOC_PROPERTY = "ResourceLoc";
+  private final String ANNOTATION_TYPE = "GENE";
   
   @Override
   public void initialize(UimaContext aContext) throws ResourceInitializationException {
@@ -46,7 +54,7 @@ public class DictionaryNERAnnotator extends JCasAnnotator_ImplBase {
       String line;
       
       while ((line = rdr.readLine()) != null) {
-        dictionary.addEntry(new DictionaryEntry<String>(line.trim(), "GENE"));
+        dictionary.addEntry(new DictionaryEntry<String>(line.trim(), ANNOTATION_TYPE));
       }
       
       rdr.close();
@@ -58,7 +66,7 @@ public class DictionaryNERAnnotator extends JCasAnnotator_ImplBase {
   
   /**
    * Go over the sentences list read from the input file
-   * and add annotations independenty.
+   * and add annotations generated using the Exact Dictionary Chunking tagger.
    */
   
   @Override
@@ -96,7 +104,6 @@ public class DictionaryNERAnnotator extends JCasAnnotator_ImplBase {
         annotation.setCasProcessorId("lingpipe-dictionary");
         
         toAnnotate.add(annotation);
-        //annotation.addToIndexes();
       }
     }
     
