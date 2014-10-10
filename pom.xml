@@ -115,4 +115,8 @@
       <version>1.5</version>
     </dependency>
 	</dependencies>
+	<scm>
+		<connection>scm:git:git@github.com:shriphani/hw2-spalakod.git</connection>
+		<developerConnection>scm:git:git@github.com:shriphani/hw2-spalakod.git</developerConnection>
+	</scm>
 </project>
