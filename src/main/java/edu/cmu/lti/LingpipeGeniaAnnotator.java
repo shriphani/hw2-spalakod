@@ -22,7 +22,7 @@ import com.aliasi.util.AbstractExternalizable;
  * @author spalakod
  *
  */
-public class LingpipeFirstBestNERAnnotator extends JCasAnnotator_ImplBase {
+public class LingpipeGeniaAnnotator extends JCasAnnotator_ImplBase {
 
   private Chunker chunker;
   private final String MODEL_FILE = "ModelFile";

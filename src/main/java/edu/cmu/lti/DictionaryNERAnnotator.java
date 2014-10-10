@@ -1,54 +1,68 @@
 package edu.cmu.lti;
 
-import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
+import org.apache.uima.UimaContext;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.aliasi.chunk.Chunk;
-import com.aliasi.chunk.Chunker;
-import com.aliasi.util.AbstractExternalizable;
+import com.aliasi.dict.DictionaryEntry;
+import com.aliasi.dict.ExactDictionaryChunker;
+import com.aliasi.dict.MapDictionary;
+import com.aliasi.tokenizer.IndoEuropeanTokenizerFactory;
 
-/**
- * Implementation of lingpipe statistical annotation
- * @author spalakod
- *
- */
-public class LingpipeFirstBestNERAnnotator extends JCasAnnotator_ImplBase {
+public class DictionaryNERAnnotator extends JCasAnnotator_ImplBase {
 
-  private Chunker chunker;
-  private final String MODEL_FILE = "ModelFile";
-  
-  
   /**
-   * Read the model file from the specified location in the config
+   * Load the dictionary into memory
    */
+  
+  private MapDictionary<String> dictionary;
+  
   @Override
-  public void initialize(org.apache.uima.UimaContext aContext) throws ResourceInitializationException {
-    String modelFilePath = (String) aContext.getConfigParameterValue(MODEL_FILE);
-    File modelFile = new File(modelFilePath);
-    try {
-      chunker = (Chunker)AbstractExternalizable.readObject(modelFile);
+  public void initialize(UimaContext aContext) throws ResourceInitializationException {
+    
+    dictionary = new MapDictionary<String>();
+    
+    BufferedReader rdr; 
+    try{
+      rdr = new BufferedReader(new FileReader("src/main/resources/gene_entities.txt"));
+      String line;
+      
+      while ((line = rdr.readLine()) != null) {
+        dictionary.addEntry(new DictionaryEntry<String>(line.trim(), "GENE"));
+      }
+      
+      rdr.close();
     } catch (IOException e) {
       throw new ResourceInitializationException(e);
-    } catch (ClassNotFoundException e) {
-      throw new ResourceInitializationException(e);
     }
+    
   };
   
   /**
-   * For each sentence, use the trained model to retrieve the gene mentions
+   * Go over the sentences list read from the input file
+   * and add annotations independenty.
    */
+  
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
+    ExactDictionaryChunker chunker = new ExactDictionaryChunker(dictionary, 
+                                                                IndoEuropeanTokenizerFactory.INSTANCE,
+                                                                false,
+                                                                false);
+
+    ArrayList<NERAnnotation> toAnnotate = new ArrayList<NERAnnotation>();
+    
     for (FSIterator iter = aJCas.getAnnotationIndex(Sentence.type).iterator(); iter.hasNext();) {
       Sentence s = (Sentence)iter.next();
       
@@ -72,11 +86,17 @@ public class LingpipeFirstBestNERAnnotator extends JCasAnnotator_ImplBase {
         annotation.setText(sentence_text);
         annotation.setNamedEntity(chunkText);
         annotation.setConfidence(1);
-        annotation.setCasProcessorId("lingpipe-hmm");
+        annotation.setCasProcessorId("lingpipe-dictionary");
         
-        annotation.addToIndexes();
+        toAnnotate.add(annotation);
+        //annotation.addToIndexes();
       }
     }
     
+    for (NERAnnotation annotation : toAnnotate) {
+      annotation.addToIndexes();
+    }
+    
   }
+
 }

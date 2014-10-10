@@ -7,7 +7,10 @@
     </delegateAnalysisEngine>
     <delegateAnalysisEngine key="LingpipeNERAnnotatorDescriptor">
       <import location="../annotators/LingpipeNERAnnotatorDescriptor.xml"/>
-  </delegateAnalysisEngine>
+  	</delegateAnalysisEngine>
+    <delegateAnalysisEngine key="DictionaryNERAnnotatorDescriptor">
+      <import location="../annotators/DictionaryNERAnnotatorDescriptor.xml"/>
+  	</delegateAnalysisEngine>
   </delegateAnalysisEngineSpecifiers>
   <analysisEngineMetaData>
     <name>FeatureExtractorDescriptor</name>
@@ -19,7 +22,8 @@
     <flowConstraints>
       <fixedFlow>
         <node>SentenceAnnotatorDescriptor</node>
-		<node>LingpipeNERAnnotatorDescriptor</node>
+        <node>LingpipeNERAnnotatorDescriptor</node>
+		<node>DictionaryNERAnnotatorDescriptor</node>
       </fixedFlow>
     </flowConstraints>
     <fsIndexCollection/>
@@ -33,7 +37,7 @@
     </capabilities>
     <operationalProperties>
       <modifiesCas>true</modifiesCas>
-      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <multipleDeploymentAllowed>false</multipleDeploymentAllowed>
       <outputsNewCASes>false</outputsNewCASes>
     </operationalProperties>
   </analysisEngineMetaData>
